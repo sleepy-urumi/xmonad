@@ -1,0 +1,34 @@
+Config {
+    font = "xft:EB Garamond:size=16"
+  , bgColor = "#2A2D3F"
+  , fgColor = "#C6D9C1"
+  , position = TopSize L 100 32
+  , border = BottomB 2
+  , borderColor = "#c5a04b"
+  , alpha = 255
+  , lowerOnStart = False
+
+  , commands = [
+        Run XMonadLog
+      , Run Date "%H:%M %a %d %b" "date" 10
+      , Run Cpu ["-t", "<total>%"] 10
+      , Run Memory ["-t", "<usedratio>%"] 10
+
+      , Run DiskU [("/", "<usedp>%")] [] 600
+
+      , Run BatteryP ["BAT0"]
+        [ "-t", "<left>%"
+        , "-L", "15"
+        , "-H", "80"
+        , "-l", "#BF4124"
+        , "-h", "#a9b1d6"
+        , "--"
+        , "-O", "<fc=#c5a04b>AC</fc>"
+        , "-o", ""
+        ] 60
+    ]
+
+  , sepChar = "%"
+  , alignSep = "}{"
+  , template = "  <fc=#8563A6>󰣨</fc>  <fc=#c5a04b>%date%</fc>  |  %XMonadLog%  }{  CPU %cpu% | Mem %memory% | Disk %disku% | Bat %battery%  "
+}
