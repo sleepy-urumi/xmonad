@@ -49,7 +49,7 @@ myStartupHook = do
     spawnOnce "gnome-keyring-daemon --start --components=pkcs11,secrets,ssh"
     spawnOnce "killall picom; picom &"
     spawnOnce "pkill -f 'notification-daemon' && sleep 0.5 && dunst"
-    spawnOnce "xwallpaper --output eDP-1 --maximize /home/fuest/.wallpapers/8ztrtsedsfxgzuoi.png"
+    spawnOnce "xwallpaper --output eDP-1 --maximize /home/urumi/.wallpapers/8ztrtsedsfxgzuoi.png"
     spawnOnce "setxkbmap de"
 
 
@@ -78,7 +78,7 @@ myKeys =
     , ("M-d", spawn "rofi -show drun -theme ~/.config/rofi/theme.rasi")
     , ("M-S-r", spawn "xmonad --recompile" >> spawn "xmonad --restart")
     , ("M-q", kill)
-    , ("M-c", spawn "/home/fuest/.local/opt/floorp/floorp")
+    , ("M-c", spawn "/home/urumi/.local/opt/floorp/floorp")
     , ("M-e", spawn "pcmanfm")
     , ("M-s", withFocused toggleFloat)
     , ("<XF86MonBrightnessUp>", spawn "brightnessctl s +5%")
