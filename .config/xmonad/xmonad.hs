@@ -25,7 +25,7 @@ import qualified Data.Map.Strict as M
 import Graphics.X11.ExtraTypes.XF86
 
 myLayoutHook = avoidStruts $ spacingWithEdge 3 $
-    Dwindle R CW 1.618 1.1
+    Spiral R CW 1.618 1.1
     ||| Tall 1 (3/100) (1/2)
     ||| Mirror (Tall 1 (3/100) (1/2))
     ||| Full
