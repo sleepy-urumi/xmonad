@@ -23,9 +23,11 @@ import XMonad.Hooks.InsertPosition
 import qualified XMonad.StackSet as W
 import qualified Data.Map.Strict as M
 import Graphics.X11.ExtraTypes.XF86
+import XMonad.Hooks.EwmhDesktops
 
 myLayoutHook = avoidStruts $ spacingWithEdge 3 $
     Spiral R CW 1.618 1.1
+--    ||| Dwindle R CW 1.618 1.1
     ||| Tall 1 (3/100) (1/2)
     ||| Mirror (Tall 1 (3/100) (1/2))
     ||| Full
@@ -75,10 +77,13 @@ myStatusBar = statusBarProp "xmobar" (pure myXmobarPP)
 
 myKeys =
     [ ("M-<Return>", spawn "kitty")
+    , ("M-t", spawn "cterm")
     , ("M-d", spawn "rofi -show drun -theme ~/.config/rofi/theme.rasi")
     , ("M-S-r", spawn "xmonad --recompile" >> spawn "xmonad --restart")
     , ("M-q", kill)
-    , ("M-c", spawn "/home/urumi/.local/opt/floorp/floorp")
+    , ("M-x", spawn "/home/urumi/.scripts/suspend.sh")
+    , ("M-y", spawn "/home/urumi/.scripts/xmonad/enterFocusMode.sh toggle")
+    , ("M-c", spawn "librewolf-bin")
     , ("M-e", spawn "pcmanfm")
     , ("M-s", withFocused toggleFloat)
     , ("<XF86MonBrightnessUp>", spawn "brightnessctl s +5%")
@@ -89,7 +94,7 @@ myKeys =
     ]
 
 main :: IO ()
-main = xmonad $ withEasySB myStatusBar defToggleStrutsKey $ def
+main = xmonad . ewmhFullscreen . ewmh $ withEasySB myStatusBar defToggleStrutsKey $ def
     { modMask = mod4Mask
     , terminal = "kitty"
     , borderWidth = 2
