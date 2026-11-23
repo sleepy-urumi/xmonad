@@ -1,5 +1,8 @@
 Config {
     font = "xft:EB Garamond:size=16"
+  , additionalFonts =
+    [ "xft:Symbols Nerd Font Mono:size=16"
+    ]
   , bgColor = "#2A2D3F"
   , fgColor = "#C6D9C1"
   , position = TopSize L 100 32
@@ -12,10 +15,10 @@ Config {
         Run XMonadLog
       , Run Date "%H:%M %a %d %b" "date" 10
       , Run Cpu ["-t", "<total>%"] 10
-      , Run Memory ["-t", "<usedratio>%"] 10
-
+      , Run Memory ["-t", "<used> MiB"] 10
       , Run DiskU [("/", "<usedp>%")] [] 600
-
+      , Run Com "/home/urumi/.config/xmobar/scripts/xmobar-brightness.sh" [] "brightness" 5
+      , Run Com "/home/urumi/.config/xmobar/scripts/xmobar-volume.sh" [] "volume" 5
       , Run BatteryP ["BAT0"]
         [ "-t", "<left>%"
         , "-L", "15"
@@ -30,5 +33,5 @@ Config {
 
   , sepChar = "%"
   , alignSep = "}{"
-  , template = "  <fc=#8563A6>󰣨</fc>  <fc=#c5a04b>%date%</fc>  |  %XMonadLog%  }{  CPU %cpu% | Mem %memory% | Disk %disku% | Bat %battery%  "
+  , template = "  <fc=#8563A6>󰣨</fc>  <fc=#c5a04b>%date%</fc>  |  %XMonadLog%  }{  Cpu %cpu% | Mem %memory% | Vol %volume% | Bright %brightness% | Bat %battery%  "
 }
